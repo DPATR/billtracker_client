@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>BILL TRACKER</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
@@ -12,14 +12,65 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body class="container-fluid">
-      <h1>Example</h1>
-
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-      minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-      ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-      est laborum.</p>
+      <div>
+        <div class="headingContainer"><h2 class="topHeading">Bill Tracker</h2></div>
+        <br>
+        <div id='message' class='message'></div>
+        <br>
+      </div>
+      <form id="sign-up">
+        <fieldset>
+          <legend class="authlabel">Sign up!</legend>
+            <input type="text" id="emailSignup" class="signup" name="credentials[email]" placeholder="Enter Email">
+            <input type="text" id="passwordSignup" class="signup" name="credentials[password]" placeholder="Enter Password">
+            <input type="text" id="confirmSignup" class="signup" name="credentials[password_confirmation]" placeholder="Confirm Password">
+            <input type="submit" class="authClickSignup" name="submit" value="Sign up!">
+            <input type="reset" class="authClickSignup" value="Reset" />
+        </fieldset>
+      </form>
+      <br>
+      <form id="sign-in">
+        <fieldset>
+          <legend class="authlabel">Sign in!</legend>
+          <input type="text" id="emailSignin" class="signin" name="credentials[email]" placeholder="Enter Email">
+          <input type="text" id="passwordSignin" class="signin" name="credentials[password]" placeholder="Enter Password">
+          <input type="submit" class="authClickSignin" name="submit" value="Sign in!">
+          <input type="reset" class="authClickSignin" value="Reset" />
+        </fieldset>
+      </form>
+      <br>
+      <form id="change-password">
+        <fieldset>
+          <legend class="authlabel">Change Password!</legend>
+          <input type="text" id="oldPswdChange" class="pswdchange" name="passwords[old]" placeholder="Enter Old Password">
+          <input type="text" id="newPswdChange" class="pswdchange" name="passwords[new]" placeholder="Enter New Password">
+          <input type="submit" class="authClickPswd" name="submit" value="Change Password!">
+          <input type="reset" class="authClickPswd" value="Reset" />
+        </fieldset>
+      </form>
+      <br>
+      <form id="sign-out">
+        <fieldset>
+          <legend class="authlabel">Sign out!</legend>
+          <input type="submit" class="authClickSignout" name="submit" value="Sign out!">
+        </fieldset>
+      </form>
+      <div id="container" class="buttons">
+          <button type="button" id="getBillsButton" class="btn-view">View Bills</button>
+          <button type="button" id="createBillButton" class="btn-create">Create A Bill</button>
+      </div>
+      <br>
+      <form id="create-bill">
+        <fieldset>
+          <legend class="createlabel">Create a New Bill</legend>
+          <input type="text" id="billCreditor" class="createBill" name="creditorName" placeholder="Enter Creditor Name">
+          <input type="text" id="billMonth" class="createBill" name="dueMonth" placeholder="Enter Month Due">
+          <input type="text" id="billAmount" class="createBill" name="dueAmount" placeholder="Enter Bill Amount">
+          <input type="submit" class="billClickCreate" name="submit" value="Create Bill">
+          <input type="reset" class="billClickCreate" value="Reset" />
+        </fieldset>
+      </form>
+    <!-- <section id="content"></section> -->
+      <div id="content" class="content"></div>
     </body>
 </html>

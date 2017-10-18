@@ -1,0 +1,25 @@
+<!-- Below is one block of HTML for each record in an array -->
+<!-- In api.js, the get request is url: app.host + '/bills' which returns an array of bills -->
+<!-- This code iterates through all rows in the array of bills  -->
+
+{{#each bills as |bill|}}
+  <!-- {{> partial}} -->
+  <ul data-id="{{bill.id}}">
+    <!-- <li>
+      <small>Title: {{bill.title}}</small>
+     </li> -->
+  <li>
+    {{#if bill.creditor}}
+      <!-- Add data elements from bills table below -->
+      {{bill.creditor}}
+      {{bill.month_due}}
+      {{bill.amount}}
+      {{bill.status}}
+    {{else}}
+      No creditor.
+    {{/if}}
+  </li>
+  <li><button class='payBill'>Pay Bill</button>
+  </li>
+</ul>
+{{/each}}
