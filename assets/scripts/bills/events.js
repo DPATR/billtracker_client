@@ -73,40 +73,40 @@ const onSignOut = function (event) {
   // Add fields for onCreateBill to initialize them to null values on Sign Out
 }
 
-const onCreateBill = function (event) {
-  const data = getFormFields(this)
-  event.preventDefault()
-  $('#message').text('')
-  api.createBill(data)
-    .then(ui.createBillSuccess)
-    .catch(ui.createBillFailure)
-}
-
-const onGetBills = (event) => {
-  event.preventDefault()
-  $('#message').text('')
-  api.getBills()
-    .then(ui.getBillsSuccess)
-    .then(function () {
-      $('.payBill').on('click', onDeleteBill)
-    })
-    .catch(ui.getBillsFailure)
-}
-
-const onDeleteBill = function (event) {
-  $(this).parent().parent().hide()
-  api.deleteBill(event) // not sure if I need event here but need to point row in array
-    .then(ui.deleteBillSuccess)
-    .catch(ui.deleteBillFailure)
-}
+// const onCreateBill = function (event) {
+//   const data = getFormFields(this)
+//   event.preventDefault()
+//   $('#message').text('')
+//   api.createBill(data)
+//     .then(ui.createBillSuccess)
+//     .catch(ui.createBillFailure)
+// }
+//
+// const onGetBills = (event) => {
+//   event.preventDefault()
+//   $('#message').text('')
+//   api.getBills()
+//     .then(ui.getBillsSuccess)
+//     .then(function () {
+//       $('.payBill').on('click', onDeleteBill)
+//     })
+//     .catch(ui.getBillsFailure)
+// }
+//
+// const onDeleteBill = function (event) {
+//   $(this).parent().parent().hide()
+//   api.deleteBill(event) // not sure if I need event here but need to point row in array
+//     .then(ui.deleteBillSuccess)
+//     .catch(ui.deleteBillFailure)
+// }
 
 const addHandlers = function () {
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
   $('#change-password').on('submit', onChangePassword)
   $('#sign-out').on('submit', onSignOut)
-  $('#createBillButton').on('click', onCreateBill)
-  $('#getBillsButton').on('click', onGetBills)
+  // $('#createBillButton').on('click', onCreateBill)
+  // $('#getBillsButton').on('click', onGetBills)
   // $('.cell').on('click', onClickBoard)
 }
 
@@ -115,8 +115,8 @@ module.exports = {
   onSignIn,
   onChangePassword,
   onSignOut,
-  onCreateBill,
-  onDeleteBill,
-  onGetBills,
+  // onCreateBill,
+  // onDeleteBill,
+  // onGetBills,
   addHandlers
 }

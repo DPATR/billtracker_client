@@ -2,7 +2,7 @@
 <!-- In api.js, the get request is url: app.host + '/bills' which returns an array of bills -->
 <!-- This code iterates through all rows in the array of bills  -->
 
-{{#each bills as |bill|}}
+<!-- {{#each bills as |bill|}}
   <!-- {{> partial}} -->
   <ul data-id="{{bill.id}}">
     <!-- <li>
@@ -12,9 +12,9 @@
     {{#if bill.creditor}}
       <!-- Add data elements from bills table below -->
       {{bill.creditor}}
-      {{bill.month_due}}
-      {{bill.amount}}
-      {{bill.status}}
+      {{bill.billing_month}}
+      {{bill.amount_due}}
+
     {{else}}
       No creditor.
     {{/if}}
@@ -22,4 +22,4 @@
   <li><button class='payBill'>Pay Bill</button>
   </li>
 </ul>
-{{/each}}
+{{/each}} -->

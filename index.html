@@ -63,14 +63,25 @@
       <form id="create-bill">
         <fieldset>
           <legend class="createlabel">Create a New Bill</legend>
-          <input type="text" id="billCreditor" class="createBill" name="creditorName" placeholder="Enter Creditor Name">
-          <input type="text" id="billMonth" class="createBill" name="dueMonth" placeholder="Enter Month Due">
-          <input type="text" id="billAmount" class="createBill" name="dueAmount" placeholder="Enter Bill Amount">
-          <input type="submit" class="billClickCreate" name="submit" value="Create Bill">
-          <input type="reset" class="billClickCreate" value="Reset" />
+          <input type="text" id="c_billCreditor" class="createBill" name="c_creditorName" placeholder="Enter Creditor Name">
+          <input type="text" id="c_billMonth" class="createBill" name="c_dueMonth" placeholder="Enter Month Due">
+          <input type="text" id="c_billAmount" class="createBill" name="c_dueAmount" placeholder="Enter Bill Amount">
+          <input type="submit" class="btn-newbill" name="c_submit" value="Create Bill">
+          <input type="reset" class="btn-newbill" value="Reset" />
         </fieldset>
       </form>
-    <!-- <section id="content"></section> -->
-      <div id="content" class="content"></div>
+      <br>
+      <form id="update-bill">
+        <fieldset>
+          <legend class="updatelabel">Update a Bill</legend>
+          <input type="text" id="billCreditor" class="updateBill" name="creditorName">
+          <input type="text" id="billMonth" class="updateBill" name="dueMonth">
+          <input type="text" id="billAmount" class="updateBill" name="dueAmount">
+          <input type="submit" class="btn-updbill" name="u_submit" value="Update Bill">
+          <input type="reset" class="btn-updbill" value="Reset" />
+        </fieldset>
+      </form>
+    <section id="content" class="content"></section>
+      <!-- <div id="content" class="content"></div> -->
     </body>
 </html>

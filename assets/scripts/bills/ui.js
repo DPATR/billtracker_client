@@ -3,7 +3,7 @@
 const store = require('../store')
 
 // When you set a variable to a require that instantiates handlebars, the variable becomes a function.
-const showBillsTemplate = require('../templates/bill-listing.handlebars')
+// const showBillsTemplate = require('../templates/bill-listing.handlebars')
 
 const signUpSuccess = function (data) {
   $('#message').text('Signed up successfully')
@@ -56,18 +56,18 @@ const signOutFailure = function (error) {
   $('#message').text('Error on sign-out')
 }
 
-const getBillsSuccess = (data) => {
-  // console.log(data)
-  // showBillsTemplate is a function that is created by requiring handlebars
-  // The function will take 1 parameter - an object
-  const showBillsHtml = showBillsTemplate({ bills: data.bills })
-  $('.content').append(showBillsHtml)
-}
+// const getBillsSuccess = (data) => {
+//   // console.log(data)
+//   // showBillsTemplate is a function that is created by requiring handlebars
+//   // The function will take 1 parameter - an object
+//   const showBillsHtml = showBillsTemplate({ bills: data.bills })
+//   $('.content').append(showBillsHtml)
+// }
 
-const getBillsFailure = function (error) {
-  console.error(error)
-  $('#message').text('Error on sign-out')
-}
+// const getBillsFailure = function (error) {
+//   console.error(error)
+//   $('#message').text('Error on sign-out')
+// }
 
 module.exports = {
   signUpSuccess,
@@ -77,7 +77,7 @@ module.exports = {
   changePasswordSuccess,
   changePasswordFailure,
   signOutSuccess,
-  signOutFailure,
-  getBillsSuccess,
-  getBillsFailure
+  signOutFailure
+  // getBillsSuccess,
+  // getBillsFailure
 }

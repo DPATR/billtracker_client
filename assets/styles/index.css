@@ -1,0 +1,85 @@
+.container-fluid {
+  /*background-color: #183249;*/
+  background-color: #116466;
+  /*background-color: #0f5c5e;*/
+  /*background-color: #0e5456;*/
+}
+
+/*#create-bill, #update-bill{
+  display: none;
+}*/
+
+./*buttons {
+  display: none;
+}*/
+
+#container {
+  text-align: center;
+}
+
+.btn-view, .btn-create {
+  /*background-color: #dbd095;*/
+  /*background-color: #D9B08C;*/
+  background-color: #FFCB9A;
+  border: 3px solid;
+  border-radius: 15px;
+  /*color: #808080;/*
+  /*color: #2C3531;*/
+  color: #544436;
+  font-size: 20px;
+}
+
+.btn-view {
+  display: inline-block;
+}
+
+.btn-create {
+  display: inline-block;
+}
+
+.headingContainer {
+  align-items: center;
+  background-color: #FFCB9A;
+  /*background-color: #FDD5AF;*/
+  display: flex;
+height: 100px;
+}
+
+.headingContainer, h2 {
+  margin: auto;
+  vertical-align: middle;
+}
+
+.topHeading {
+  color: #544436;
+  font-family: Georgia, serif;
+  font-size: 50px;
+  font-style: italic;
+  font-weight: bold;
+  padding-bottom: 22px;
+  padding-top: 10px;
+  vertical-align:middle;
+}
+
+
+#change-password, #sign-out {
+  display: none;
+}
+
+.authlabel, .createlabel, .updatelabel {
+  /*color: #d6d2b5;*/
+  color: #fdd5af;
+  font-size: 18px;
+}
+
+.authClickSignup, .authClickSignin, .authClickPswd, .authClickSignout, .btn-newbill, .btn-updbill  {
+  background-color: #FFCB9A;
+  border: 2px solid;
+  border-radius: 15px;
+  color: #544436;
+  font-size: 15px;
+}
+
+.signup, .signin, .pswdchange, .createBill, .updateBill {
+  background-color: #c7baaf;
+}
