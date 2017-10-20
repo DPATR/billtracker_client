@@ -7,7 +7,7 @@ const ui = require('./ui.js')
 const store = require('../store')
 
 const initVariables = function () {
-  $('#gamemessage').text('')
+  // $('#gamemessage').text('')
   // symbol = ''
   // counter = 0
   // drawCounter = 0
@@ -70,29 +70,49 @@ const onSignOut = function (event) {
   document.getElementById('confirmSignup').value = ''
   document.getElementById('oldPswdChange').value = ''
   document.getElementById('newPswdChange').value = ''
-  // Add fields for onCreateBill to initialize them to null values on Sign Out
+  document.getElementById('c_billCreditor').value = ''
+  document.getElementById('c_billMonth').value = ''
+  document.getElementById('c_billAmount').value = ''
+  // Add fields for onUpdateBill to initialize them to null values on Sign Out
 }
 
-// const onCreateBill = function (event) {
-//   const data = getFormFields(this)
-//   event.preventDefault()
-//   $('#message').text('')
-//   api.createBill(data)
-//     .then(ui.createBillSuccess)
-//     .catch(ui.createBillFailure)
-// }
-//
-// const onGetBills = (event) => {
-//   event.preventDefault()
-//   $('#message').text('')
-//   api.getBills()
-//     .then(ui.getBillsSuccess)
-//     .then(function () {
-//       $('.payBill').on('click', onDeleteBill)
-//     })
-//     .catch(ui.getBillsFailure)
-// }
-//
+const setCreateForm = function () {
+  document.getElementById('c_billCreditor').value = ''
+  document.getElementById('c_billMonth').value = ''
+  document.getElementById('c_billAmount').value = ''
+  $('#create-bill').show()
+}
+
+// Create a new bill that is owned by the current user who is signed in
+const onCreateBill = function (event) {
+  const data = getFormFields(this)
+  event.preventDefault()
+  // $('#message').text('')
+  console.log('in events.js')
+  const newBillData = {
+    'bill': {
+      'creditor': data.c_creditorName,
+      'billing_month': data.c_dueMonth,
+      'amount_due': data.c_dueAmount
+    }
+  }
+  console.log(newBillData)
+  api.createBill(newBillData)
+    .then(ui.createBillSuccess)
+    .catch(ui.createBillFailure)
+}
+
+const onGetBills = (event) => {
+  event.preventDefault()
+  // $('#message').text('')
+  api.getBills()
+    .then(ui.getBillsSuccess)
+    // .then(function () {
+    //   $('.paybill').on('click', onDeleteBill)
+    // })
+    .catch(ui.getBillsFailure)
+}
+
 // const onDeleteBill = function (event) {
 //   $(this).parent().parent().hide()
 //   api.deleteBill(event) // not sure if I need event here but need to point row in array
@@ -105,9 +125,9 @@ const addHandlers = function () {
   $('#sign-in').on('submit', onSignIn)
   $('#change-password').on('submit', onChangePassword)
   $('#sign-out').on('submit', onSignOut)
-  // $('#createBillButton').on('click', onCreateBill)
-  // $('#getBillsButton').on('click', onGetBills)
-  // $('.cell').on('click', onClickBoard)
+  $('#createBillButton').on('click', setCreateForm)
+  $('#getBillsButton').on('click', onGetBills)
+  $('#create-bill').on('submit', onCreateBill) // do the actual creation of the bill using this
 }
 
 module.exports = {
@@ -115,8 +135,8 @@ module.exports = {
   onSignIn,
   onChangePassword,
   onSignOut,
-  // onCreateBill,
+  onCreateBill,
   // onDeleteBill,
-  // onGetBills,
+  onGetBills,
   addHandlers
 }

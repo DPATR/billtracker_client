@@ -1,15 +1,19 @@
 .container-fluid {
-  /*background-color: #183249;*/
-  background-color: #116466;
+  /*background-color: #116466;*/
+  background-color: #105658;
   /*background-color: #0f5c5e;*/
   /*background-color: #0e5456;*/
 }
 
-/*#create-bill, #update-bill{
+/*#update-bill{
   display: none;
 }*/
 
-./*buttons {
+#create-bill{
+  display: none;
+}
+
+/*.buttons {
   display: none;
 }*/
 
@@ -82,4 +86,10 @@ height: 100px;
 
 .signup, .signin, .pswdchange, .createBill, .updateBill {
   background-color: #c7baaf;
+}
+
+.message {
+  color: #fdd5af;
+  font-size: 20px;
+  text-align: left;
 }

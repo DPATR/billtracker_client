@@ -3,7 +3,7 @@
 const store = require('../store')
 
 // When you set a variable to a require that instantiates handlebars, the variable becomes a function.
-// const showBillsTemplate = require('../templates/bill-listing.handlebars')
+const showBillsTemplate = require('../templates/bill-listing.handlebars')
 
 const signUpSuccess = function (data) {
   $('#message').text('Signed up successfully')
@@ -18,7 +18,6 @@ const signInSuccess = function (data) {
   $('#message').text('Signed in successfully')
   store.user = data.user
   store.signedIn = true
-  // $('.games').show()
   $('.buttons').show()
   $('#change-password').show()
   $('#sign-out').show()
@@ -43,7 +42,6 @@ const changePasswordFailure = function (error) {
 const signOutSuccess = function (data) {
   $('#message').text('Signed out successfully')
   store.user = null
-  // $('.games').hide()
   $('.buttons').hide()
   $('#sign-in').show()
   $('#sign-up').show()
@@ -56,18 +54,28 @@ const signOutFailure = function (error) {
   $('#message').text('Error on sign-out')
 }
 
-// const getBillsSuccess = (data) => {
-//   // console.log(data)
-//   // showBillsTemplate is a function that is created by requiring handlebars
-//   // The function will take 1 parameter - an object
-//   const showBillsHtml = showBillsTemplate({ bills: data.bills })
-//   $('.content').append(showBillsHtml)
-// }
+const createBillSuccess = function (data) {
+  $('#message').text('Created bill successfully')
+  $('#create-bill').hide()
+}
 
-// const getBillsFailure = function (error) {
-//   console.error(error)
-//   $('#message').text('Error on sign-out')
-// }
+const createBillFailure = function (error) {
+  console.error(error)
+  $('#message').text('Error on create bill')
+}
+
+const getBillsSuccess = (data) => {
+  // console.log('in ui.js' + ' ' + data)
+  // showBillsTemplate is a function that is created by requiring handlebars
+  // The function will take 1 parameter - an object array (bills)
+  const showBillsHtml = showBillsTemplate({ bills: data.bills })
+  $('.content').append(showBillsHtml)
+}
+
+const getBillsFailure = function (error) {
+  console.error(error)
+  $('#message').text('Error on sign-out')
+}
 
 module.exports = {
   signUpSuccess,
@@ -77,7 +85,9 @@ module.exports = {
   changePasswordSuccess,
   changePasswordFailure,
   signOutSuccess,
-  signOutFailure
-  // getBillsSuccess,
-  // getBillsFailure
+  signOutFailure,
+  createBillSuccess,
+  createBillFailure,
+  getBillsSuccess,
+  getBillsFailure
 }

@@ -2,24 +2,19 @@
 <!-- In api.js, the get request is url: app.host + '/bills' which returns an array of bills -->
 <!-- This code iterates through all rows in the array of bills  -->
 
-<!-- {{#each bills as |bill|}}
-  <!-- {{> partial}} -->
+{{#each bills as |bill|}}
   <ul data-id="{{bill.id}}">
-    <!-- <li>
-      <small>Title: {{bill.title}}</small>
-     </li> -->
+    <li>
+      <small>Title: {{bill.creditor}}</small>
+    </li>
   <li>
     {{#if bill.creditor}}
-      <!-- Add data elements from bills table below -->
       {{bill.creditor}}
-      {{bill.billing_month}}
-      {{bill.amount_due}}
-
     {{else}}
-      No creditor.
+      No description.
     {{/if}}
   </li>
-  <li><button class='payBill'>Pay Bill</button>
+  <li><button class='paybill'>Remove</button>
   </li>
 </ul>
-{{/each}} -->
+{{/each}}
