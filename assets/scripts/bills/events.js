@@ -6,18 +6,38 @@ const api = require('./api.js')
 const ui = require('./ui.js')
 const store = require('../store')
 
+// initialize variables used for processing and messages on screen
 const initVariables = function () {
-  // $('#gamemessage').text('')
-  // symbol = ''
-  // counter = 0
-  // drawCounter = 0
-  // cellValue = ''
-  // haveAWinner = false
-  // gameOver = false
-  // index = 0
-  // gameStarted = false
-  // gameArray = ['', '', '', '', '', '', '', '', '']
-  // $('.cell').text('')
+  $('#message').text('')
+  $('#billtracker_message').text('')
+  return true
+}
+
+// initialize Authentication text input elements
+const initAuthElements = function () {
+  document.getElementById('emailSignin').value = ''
+  document.getElementById('passwordSignin').value = ''
+  document.getElementById('emailSignup').value = ''
+  document.getElementById('passwordSignup').value = ''
+  document.getElementById('confirmSignup').value = ''
+  document.getElementById('oldPswdChange').value = ''
+  document.getElementById('newPswdChange').value = ''
+  return true
+}
+
+// initialize Create Bill text input elements
+const initCreateElements = function () {
+  document.getElementById('c_billCreditor').value = ''
+  document.getElementById('c_billMonth').value = ''
+  document.getElementById('c_billAmount').value = ''
+  return true
+}
+
+// initialize Update Bill text input elements
+const initUpdateElements = function () {
+  document.getElementById('billCreditor').value = ''
+  document.getElementById('billMonth').value = ''
+  document.getElementById('billAmount').value = ''
   return true
 }
 
@@ -34,6 +54,8 @@ let signedIn = false
 
 const onSignIn = function (event) {
   const data = getFormFields(this)
+  console.log('in events.js')
+  // console.log(this)
   event.preventDefault()
   $('#message').text('')
   api.signIn(data)
@@ -62,33 +84,39 @@ const onSignOut = function (event) {
   api.signOut(data)
     .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)
+  initAuthElements()
+  initCreateElements()
+  initUpdateElements()
   initVariables()
-  document.getElementById('emailSignin').value = ''
-  document.getElementById('passwordSignin').value = ''
-  document.getElementById('emailSignup').value = ''
-  document.getElementById('passwordSignup').value = ''
-  document.getElementById('confirmSignup').value = ''
-  document.getElementById('oldPswdChange').value = ''
-  document.getElementById('newPswdChange').value = ''
-  document.getElementById('c_billCreditor').value = ''
-  document.getElementById('c_billMonth').value = ''
-  document.getElementById('c_billAmount').value = ''
-  // Add fields for onUpdateBill to initialize them to null values on Sign Out
+  clearBills()
 }
 
-const setCreateForm = function () {
-  document.getElementById('c_billCreditor').value = ''
-  document.getElementById('c_billMonth').value = ''
-  document.getElementById('c_billAmount').value = ''
-  $('#create-bill').show()
+// clear the View Bills list on screen
+// const clearBills = function () {
+const clearBills = () => {
+  event.preventDefault()
+  ui.clearBills()
+}
+
+// const setCreateForm = function () {
+const setCreateForm = () => {
+  signedIn = store.signedIn
+  if (!signedIn) {
+    $('#message').text('You need to be signed in to create a new bill')
+  } else {
+    initAuthElements()
+    initCreateElements()
+    initVariables()
+    clearBills()
+    $('#create-bill').show()
+  }
 }
 
 // Create a new bill that is owned by the current user who is signed in
 const onCreateBill = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
-  // $('#message').text('')
-  console.log('in events.js')
+  // console.log('in events.js')
   const newBillData = {
     'bill': {
       'creditor': data.c_creditorName,
@@ -96,7 +124,7 @@ const onCreateBill = function (event) {
       'amount_due': data.c_dueAmount
     }
   }
-  console.log(newBillData)
+  // console.log(newBillData)
   api.createBill(newBillData)
     .then(ui.createBillSuccess)
     .catch(ui.createBillFailure)
@@ -104,20 +132,21 @@ const onCreateBill = function (event) {
 
 const onGetBills = (event) => {
   event.preventDefault()
-  // $('#message').text('')
+  initAuthElements()
+  initCreateElements()
+  initVariables()
+  // console.log('in events.js')
   api.getBills()
     .then(ui.getBillsSuccess)
-    // .then(function () {
-    //   $('.paybill').on('click', onDeleteBill)
-    // })
     .catch(ui.getBillsFailure)
 }
 
 // const onDeleteBill = function (event) {
 //   $(this).parent().parent().hide()
-//   api.deleteBill(event) // not sure if I need event here but need to point row in array
-//     .then(ui.deleteBillSuccess)
-//     .catch(ui.deleteBillFailure)
+//   // console.log(event)
+//   // api.deleteBill(event) // not sure if I need event here but need to point row in array
+//   //   .then(ui.deleteBillSuccess)
+//   //   .catch(ui.deleteBillFailure)
 // }
 
 const addHandlers = function () {
@@ -125,9 +154,10 @@ const addHandlers = function () {
   $('#sign-in').on('submit', onSignIn)
   $('#change-password').on('submit', onChangePassword)
   $('#sign-out').on('submit', onSignOut)
-  $('#createBillButton').on('click', setCreateForm)
+  $('#createBillButton').on('click', setCreateForm) // initialize an show form
   $('#getBillsButton').on('click', onGetBills)
-  $('#create-bill').on('submit', onCreateBill) // do the actual creation of the bill using this
+  $('#create-bill').on('submit', onCreateBill) // do the actual creation of the bill
+  // $('.updatebill').on('click', initUpdateElements)
 }
 
 module.exports = {

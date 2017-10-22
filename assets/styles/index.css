@@ -89,7 +89,10 @@ height: 100px;
 }
 
 .message {
-  color: #fdd5af;
-  font-size: 20px;
+  /*color: #fdd5af;*/
+  /*color: #dd920a;*/
+  color: #f92702;
+  font-size: 21px;
+  font-family: sans-serif;
   text-align: left;
 }

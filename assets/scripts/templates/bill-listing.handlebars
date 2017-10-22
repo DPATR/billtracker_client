@@ -9,12 +9,13 @@
     </li>
   <li>
     {{#if bill.creditor}}
-      {{bill.creditor}}
+      {{bill.creditor}} {{bill.billing_month}} {{bill.amount_due}}
     {{else}}
       No description.
     {{/if}}
   </li>
-  <li><button class='paybill'>Remove</button>
+  <li><button id="{{bill.id}}" class='paybill'>Pay Bill</button>
+  <li><button id="{{bill.id}}" class='updatebill'>Edit Bill</button>
   </li>
 </ul>
 {{/each}}

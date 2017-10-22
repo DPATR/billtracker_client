@@ -43,9 +43,7 @@ const signOut = function (data) {
   })
 }
 
-const getBills = function (data) {
-  console.log('In api.js')
-  console.log(data)
+const getBills = function () {
   return $.ajax({ // make a request of the API
     url: config.apiOrigin + '/bills',
     method: 'GET'
@@ -65,13 +63,25 @@ const createBill = function (data) {
   })
 }
 
+const deleteBill = function (currentBillID) {
+  // const billId = store.currentBillID
+  console.log('In api.js, currentBillID = ' + currentBillID)
+  return $.ajax({
+    url: config.apiOrigin + '/bills/' + currentBillID,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
   changePassword,
   signOut,
   getBills,
-  createBill
-  // updategame,
+  createBill,
+  deleteBill
   // getGames
 }
