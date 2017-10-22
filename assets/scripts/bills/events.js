@@ -9,7 +9,7 @@ const store = require('../store')
 // initialize variables used for processing and messages on screen
 const initVariables = function () {
   $('#message').text('')
-  $('#billtracker_message').text('')
+  $('#billtracker_message').text('') // may not need to use this haven't yet!
   return true
 }
 
@@ -30,14 +30,6 @@ const initCreateElements = function () {
   document.getElementById('c_billCreditor').value = ''
   document.getElementById('c_billMonth').value = ''
   document.getElementById('c_billAmount').value = ''
-  return true
-}
-
-// initialize Update Bill text input elements
-const initUpdateElements = function () {
-  document.getElementById('billCreditor').value = ''
-  document.getElementById('billMonth').value = ''
-  document.getElementById('billAmount').value = ''
   return true
 }
 
@@ -86,7 +78,7 @@ const onSignOut = function (event) {
     .catch(ui.signOutFailure)
   initAuthElements()
   initCreateElements()
-  initUpdateElements()
+  // initUpdateElements()
   initVariables()
   clearBills()
 }
@@ -141,14 +133,6 @@ const onGetBills = (event) => {
     .catch(ui.getBillsFailure)
 }
 
-// const onDeleteBill = function (event) {
-//   $(this).parent().parent().hide()
-//   // console.log(event)
-//   // api.deleteBill(event) // not sure if I need event here but need to point row in array
-//   //   .then(ui.deleteBillSuccess)
-//   //   .catch(ui.deleteBillFailure)
-// }
-
 const addHandlers = function () {
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
@@ -157,7 +141,6 @@ const addHandlers = function () {
   $('#createBillButton').on('click', setCreateForm) // initialize an show form
   $('#getBillsButton').on('click', onGetBills)
   $('#create-bill').on('submit', onCreateBill) // do the actual creation of the bill
-  // $('.updatebill').on('click', initUpdateElements)
 }
 
 module.exports = {
@@ -166,7 +149,6 @@ module.exports = {
   onChangePassword,
   onSignOut,
   onCreateBill,
-  // onDeleteBill,
   onGetBills,
   addHandlers
 }

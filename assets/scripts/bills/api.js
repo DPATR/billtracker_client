@@ -63,9 +63,22 @@ const createBill = function (data) {
   })
 }
 
+const updateBill = function (data, currentBillID) {
+  console.log('In api.js')
+  console.log('currentBillID = ' + currentBillID)
+  console.log(data)
+  return $.ajax({ // make a request of the API
+    url: config.apiOrigin + '/bills/' + currentBillID,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
+
 const deleteBill = function (currentBillID) {
-  // const billId = store.currentBillID
-  console.log('In api.js, currentBillID = ' + currentBillID)
+  // console.log('In api.js, currentBillID = ' + currentBillID)
   return $.ajax({
     url: config.apiOrigin + '/bills/' + currentBillID,
     method: 'DELETE',
@@ -82,6 +95,6 @@ module.exports = {
   signOut,
   getBills,
   createBill,
-  deleteBill
-  // getGames
+  deleteBill,
+  updateBill
 }
