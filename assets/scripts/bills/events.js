@@ -137,6 +137,10 @@ const onGetBills = (event) => {
   }
 }
 
+// const onNavSign = (event) => {
+//   $('#sign-in').modal('show')
+// }
+
 const addHandlers = function () {
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
@@ -145,6 +149,7 @@ const addHandlers = function () {
   $('#createBillButton').on('click', setCreateForm) // initialize an show form
   $('#getBillsButton').on('click', onGetBills)
   $('#create-bill').on('submit', onCreateBill) // do the actual creation of the bill
+  // $('#nav-bar-signin').on('click', onNavSign)
 }
 
 module.exports = {
@@ -154,5 +159,6 @@ module.exports = {
   onSignOut,
   onCreateBill,
   onGetBills,
+  // onNavSign,
   addHandlers
 }

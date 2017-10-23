@@ -54,6 +54,7 @@ const signOutSuccess = function (data) {
   $('#sign-out').hide()
   $('#create-bill').hide()
   $('#updateBillModal').modal('hide')
+  clearBills()
 }
 
 const signOutFailure = function (error) {
@@ -133,6 +134,7 @@ const onUpdateSave = function () { // When signed in user enters data in the mod
 const getBillsSuccess = (data) => { // This function will use handlebars to display a list of Bills for signed in user, Delete the bill when use clicks Pay Bill button and Update the bill when user clicks Update Bill button
   // $('#message').text('Get bills was successful')
   $('#create-bill').hide()
+  $('#content').show()
   // **  Commented out below to test original handlebars code **
   // const currentBills = { bills: data.bills }
   // const currentBillsArray = currentBills.bills

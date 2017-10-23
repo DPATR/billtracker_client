@@ -2,7 +2,7 @@
 
 const config = {
   apiOrigins: {
-    // production: 'https://cryptic-headland-52960.herokuapp.com',
+    production: 'https://cryptic-headland-52960.herokuapp.com',
     development: 'http://localhost:4741/'
   }
 }
