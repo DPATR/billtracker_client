@@ -6,5 +6,4 @@ const config = {
     development: 'http://localhost:4741/'
   }
 }
-
 module.exports = config
