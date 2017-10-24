@@ -5,17 +5,13 @@
   /*background-color: #0e5456;*/
 }
 
-/*#update-bill{
-  display: none;
-}*/
-
 #create-bill{
   display: none;
 }
 
-/*.buttons {
-  display: none;
-}*/
+.buttons {
+  align-items: center;
+}
 
 #container {
   text-align: center;
@@ -46,7 +42,7 @@
   background-color: #FFCB9A;
   /*background-color: #FDD5AF;*/
   display: flex;
-height: 100px;
+  height: 100px;
 }
 
 .headingContainer, h2 {
@@ -57,7 +53,7 @@ height: 100px;
 .topHeading {
   color: #544436;
   font-family: Georgia, serif;
-  font-size: 50px;
+  font-size: 60px;
   font-style: italic;
   font-weight: bold;
   padding-bottom: 22px;
@@ -70,13 +66,53 @@ height: 100px;
   display: none;
 }
 
+.list-group-item-heading {
+  font-family:  Georgia, serif;
+  font-weight: bold;
+  /*font-style: oblique;*/
+  font-style: italic;
+  font-size: 35px;
+  color: #544436;
+  text-align: center;
+}
+
+.list-group-item-text {
+  /*font-family:  Georgia, serif;*/
+  font-weight: bold;
+  font-size: 25px;
+  font-family:sans-serif;
+  text-align: left;
+}
+
+.updateBillModal {
+  background-color: #FFCB9A;
+}
+
+.modal-title, h5 {
+  /*color: #FFCB9A;*/
+  font-size: 25px;
+  /*color: #ab430a;*/
+  color: #d66806;
+}
+
+/*#modalForm {
+  color: #105658;
+}*/
+
+/*class="modal-title" id="modalLabel*/
+
 #content {
   /*background: rgba(255, 255, 255,0.65);*/
-  opacity: 0.35;
-  border: 2px solid;
-  border-radius: 15px;
-  padding-left: 30%;
-  padding-right: 30%;
+  /*opacity: 0.35;*/
+  /*opacity: 1;*/
+  opacity: .7;
+  /*opacity: .4;*/
+  /*background-color: #105658;*/
+  /*color: inherit;*/
+  /*border: 2px solid;
+  border-radius: 15px;*/
+  padding-left: 25%;
+  padding-right: 25%;
   display: none;
 }
 
@@ -86,7 +122,13 @@ height: 100px;
   font-size: 18px;
 }
 
-.authClickSignup, .authClickSignin, .authClickPswd, .authClickSignout, .btn-newbill, .btn-updbill  {
+#submit-update {
+  /*background-color: #f9c494;*/
+  background-color: #dfc5ac;
+  color: #896443;
+}
+
+.authClickSignup, .authClickSignin, .authClickPswd, .authClickSignout, .btn-newbill, .paybill, .updatebill {
   background-color: #FFCB9A;
   border: 2px solid;
   border-radius: 15px;
@@ -98,11 +140,17 @@ height: 100px;
   background-color: #c7baaf;
 }
 
+#creditor, #month, #amount {
+  background-color: #ddd9d5;
+}
+
+
 .message {
   /*color: #fdd5af;*/
   /*color: #dd920a;*/
-  color: #f92702;
-  font-size: 21px;
+  /*color: #f92702;*/
+  color: #e55506;
+  font-size: 20px;
   font-family: sans-serif;
   text-align: left;
 }
