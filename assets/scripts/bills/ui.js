@@ -4,7 +4,6 @@
 
 const store = require('../store')
 const api = require('./api.js')
-// const getFormFields = require(`../../../lib/get-form-fields`)
 const showBillsTemplate = require('../templates/bill-listing.handlebars') // When you set a variable to a require that instantiates handlebars, the variable becomes a function.
 
 const signUpSuccess = function (data) {
@@ -18,17 +17,9 @@ const signUpFailure = function (error) {
 
 const signInSuccess = function (data) {
   $('#message').text('Signed in successfully')
-  // console.log('in ui.js')
   store.signedInID = data.user.id
-  // console.log('data.user.email = ' + data.user.id)
   store.user = data.user
   store.signedIn = true
-
-  // $('.buttons').show()
-  // $('#change-password').show()
-
-  // $('#sign-out').show()
-
   $('#sign-in').hide()
   $('#sign-up').hide()
 }
@@ -56,9 +47,6 @@ const signOutSuccess = function (data) {
   $('#sign-in').show()
   $('#sign-up').show()
   $('#change-password').hide()
-
-  // $('#sign-out').hide()
-
   $('#create-bill').hide()
   $('#updateBillModal').modal('hide')
   clearBills()
@@ -115,8 +103,6 @@ const onUpdateSave = function () { // When signed in user enters data in the mod
   event.preventDefault()
   console.log('store.currentBillID = ' + store.currentBillID)
   const currentBillID = store.currentBillID
-
-  // get value of data elements from modal window
   const creditor = $('#modalForm').find('input[name="creditor"]').val()
   const billingMonth = $('#modalForm').find('input[name="billing_month"]').val()
   const amountDue = $('#modalForm').find('input[name="amount_due"]').val()
@@ -139,20 +125,14 @@ const onUpdateSave = function () { // When signed in user enters data in the mod
 }
 
 const getBillsSuccess = (data) => { // This function will use handlebars to display a list of Bills for signed in user, Delete the bill when use clicks Pay Bill button and Update the bill when user clicks Update Bill button
-  // $('#message').text('Get bills was successful')
   $('#create-bill').hide()
   $('#content').show()
-  // **  Commented out below to test original handlebars code **
-  // const currentBills = { bills: data.bills }
-  // const currentBillsArray = currentBills.bills
-  // const newArray = currentBillsArray.filter(filterBillsByUser) // Filter array before displaying on screen; { bills: data.bills } includes bills for ALL Users
-  // const showBillsHtml = showBillsTemplate({ bills: newArray }) // showBillsTemplate is a function created by requiring handlebars; takes 1 param-an object array of bills
   const showBillsHtml = showBillsTemplate({ bills: data.bills }) // showBillsTemplate is a function created by requiring handlebars; takes 1 param-an object array of bills
   $('.content').html(showBillsHtml) // using $('.content').append(showBillsHtml) will result in duplicate entries on click of View Bills btn if you click the button more than once
   $('.paybill').on('click', function (event) { // need to put this click handler here because the button needs to be loaded into the DOM before I can put a click handler on it (i.e. cannot put this event listener into memory on page load like the others)
     event.preventDefault()
-    $(this).parent().parent().hide() // If I remove the top heading in the ui for creditor I will needto remove one parent()
-    const currentBillID = $(this).data('id') // changed after handlebars change on button:  data-id="{{bill.id}}"
+    $(this).parent().parent().hide()
+    const currentBillID = $(this).data('id')
     console.log('this is the bill that I want to delete ', currentBillID)
     api.deleteBill(currentBillID)
       .then(deleteBillSuccess)
@@ -161,7 +141,6 @@ const getBillsSuccess = (data) => { // This function will use handlebars to disp
   $('.updatebill').on('click', function (event) { // need to put this click handler here because the button needs to be loaded into the DOM before I can put a click handler on it (i.e. cannot put this event listener into memory on page load like the others)
     event.preventDefault()
     $('#updateBillModal').modal('show')
-    // const currentBillID = this.id
     const currentBillID = $(this).data('id') // changed after handlebars change on button:  data-id="{{bill.id}}"
     store.currentBillID = currentBillID
     console.log('currentBillID = ' + currentBillID)

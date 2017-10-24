@@ -69,13 +69,7 @@ const onChangePassword = function (event) {
 
 const onSignOut = function (event) {
   console.log('In onSignOut')
-
-  // const data = getFormFields(this) // original
-
   const data = store.user.id // new with navbutton
-
-  // event.preventDefault() // original
-
   $('#message').text('')
   api.signOut(data)
     .then(ui.signOutSuccess)
@@ -98,7 +92,6 @@ const onNavSignOut = function (event) {
 
 const onNavChangePassword = function (event) {
   console.log('Value of signedIn = ' + store.signedIn)
-
   signedIn = store.signedIn
   if (!signedIn) {
     $('#message').text('You need to be signed in to change password')
@@ -118,7 +111,6 @@ const clearBills = () => {
 // const setCreateForm = function () {
 const setCreateForm = () => {
   console.log('In setCreateForm')
-
   signedIn = store.signedIn
   if (!signedIn) {
     $('#message').text('You need to be signed in to create a new bill')
@@ -170,18 +162,10 @@ const addHandlers = function () {
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
   $('#change-password').on('submit', onChangePassword)
-
-  // #nav-bar-signout replaces click handler below
-  // $('#sign-out').on('submit', onSignOut)
-
   $('#createBillButton').on('click', setCreateForm) // initialize an show form
-
-  // $('#getBillsButton').on('click', onGetBills)
-
   $('#create-bill').on('submit', onCreateBill) // do the actual creation of the bill
   $('#getBillsNav').on('click', onGetBills)
   $('#createBillNav').on('click', setCreateForm) // initialize an show form
-
   $('#nav-bar-signout').on('click', onNavSignOut)
   $('#nav-bar-chgpswd').on('click', onNavChangePassword)
 }
@@ -193,6 +177,5 @@ module.exports = {
   onSignOut,
   onCreateBill,
   onGetBills,
-  // onNavSign,
   addHandlers
 }

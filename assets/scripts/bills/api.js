@@ -82,7 +82,6 @@ const updateBill = function (data, currentBillID) {
 }
 
 const deleteBill = function (currentBillID) {
-  // console.log('In api.js, currentBillID = ' + currentBillID)
   return $.ajax({
     url: config.apiOrigin + '/bills/' + currentBillID,
     method: 'DELETE',
