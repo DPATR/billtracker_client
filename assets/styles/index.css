@@ -25,9 +25,11 @@
 }*/
 
 .btn-view, .btn-create {
-  /*background-color: #D9B08C;*/
+  /*background-color: #D9B08C; darker gold*/
+
   background-color: #FFCB9A;
-  border: 4px solid;
+  /*background-color: #c7baaf;*/
+  /*border: 4px solid;*/
   /*border-radius: 15px;*/
   /*color: #808080;/*
   /*color: #2C3531;*/
@@ -86,7 +88,7 @@
   color: #544436;
   font-family:  Georgia, serif;
   /*font-style: oblique;*/
-  font-size: 35px;
+  font-size: 30px;
   font-style: italic;
   font-weight: bold;
   text-align: center;
@@ -156,9 +158,9 @@
   background-color: #c7baaf;
 }
 
-#creditor, #month, #amount {
+/*#creditor, #month, #amount {
   background-color: #ddd9d5;
-}
+}*/
 
 
 .message {

@@ -14,34 +14,21 @@
     <body class="container-fluid">
       <div>
         <div class="headingContainer"><h2 class="topHeading">Bill Tracker</h2></div>
-         <!-- <nav class="navbar navbar-default"> -->
-         <nav class="navbar navbar-inverse">
-          <div class="container-fluid">
-            <div class="navbar-header">
-              <a class="navbar-brand" href="#"></a>
-            </div>
-            <!-- <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#">View Bills</a></li>
-              <li><a href="#">Create Bill</a></li>
-            </ul> -->
-            <button id="getBillsNav" class="btn btn-view navbar-btn">View Bills</button>
-            <button id="createBillNav" class="btn btn-create navbar-btn">Create Bill</button>
-            <!-- <ul class="nav navbar-nav navbar-right">
-              <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-              <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Sign In</a></li>
-              <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Sign Out</a></li>
-              <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Change Password</a></li>
-            </ul> -->
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="#" id="nav-bar-signup" class="nav-signup">Sign Up</a></li>
-              <li><a href="#" id="nav-bar-signin" class="nav-signin">Sign In</a></li>
-              <li><a href="#" id="nav-bar-signout" class="nav-signout">Sign Out</a></li>
-              <li><a href="#" id="nav-bar-chgpswd" class="nav-chgpswd">Change Password</a></li>
-            </ul>
-          </div>
+        <nav class="navbar navbar-inverse">
+         <div class="container-fluid">
+           <div class="navbar-header">
+             <a class="navbar-brand" href="#"></a>
+           </div>
+           <button id="getBillsNav" class="btn btn-view navbar-btn">View Bills</button>
+           <button id="createBillNav" class="btn btn-create navbar-btn">Create Bill</button>
+           <ul class="nav navbar-nav navbar-right">
+             <li><a href="#" id="nav-bar-signup" class="nav-signup">Sign Up</a></li>
+             <li><a href="#" id="nav-bar-signin" class="nav-signin">Sign In</a></li>
+             <li><a href="#" id="nav-bar-signout" class="nav-signout">Sign Out</a></li>
+             <li><a href="#" id="nav-bar-chgpswd" class="nav-chgpswd">Change Password</a></li>
+           </ul>
+         </div>
         </nav>
-        <br>
         <div id='message' class='message'></div>
         <br>
       </div>
@@ -65,7 +52,6 @@
           <input type="reset" class="authClickSignin" value="Reset" />
         </fieldset>
       </form>
-      <br>
       <form id="change-password">
         <fieldset>
           <legend class="authlabel">Change Password!</legend>
@@ -80,16 +66,15 @@
         <fieldset>
           <legend class="authlabel">Sign out!</legend>
           <input type="submit" class="authClickSignout" name="submit" value="Sign out!">
-        </fieldset
+        </fieldset>
       </form>
-      <div id='billtracker_message' class='billtracker_message'></div>
-      <div id="container" class="buttons">
+      <!-- <div id='billtracker_message' class='billtracker_message'></div> -->
+      <!-- <div id="container" class="buttons">
           <button type="button" id="getBillsButton" class="btn-view-create">View Bills</button>
           <button type="button" id="createBillButton" class="btn-view-create">Create A Bill</button>
-      </div>
-      <!-- <div id="content" class="content"></div> -->
-      <p id="content" class="content"></p>
-
+          <div id="content" class="content"></div>
+      </div> -->
+      <div id="content" class="content"></div>
       <!-- Modal for Bill Update -->
       <div class="modal fade" id="updateBillModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -102,9 +87,9 @@
             </div>
             <div class="modal-body">
               <form id="modalForm">
-                <input type="text" id="creditor" name="creditor" placeholder="Enter Creditor">
-                <input type="text" id="month" name="billing_month" placeholder="Enter Billing Month">
-                <input type="text" id="amount" name="amount_due" placeholder="Enter Amount Due">
+                <input type="text" name="creditor" placeholder="Enter Creditor">
+                <input type="text" name="billing_month" placeholder="Enter Billing Month">
+                <input type="text" name="amount_due" placeholder="Enter Amount Due">
                 <br>
                 <br>
                 <button id='submit-update' class="btn-update">Save Changes</button>
@@ -113,7 +98,6 @@
           </div>
         </div>
       </div>
-      <br>
       <form id="create-bill">
         <fieldset>
           <legend class="createlabel">Create a New Bill</legend>
