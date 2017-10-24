@@ -1,8 +1,5 @@
 .container-fluid {
-  /*background-color: #116466;*/
   background-color: #105658;
-  /*background-color: #0f5c5e;*/
-  /*background-color: #0e5456;*/
 }
 
 #create-bill{
@@ -14,51 +11,24 @@
 }
 
 .navbar.navbar-inverse {
-    background-color: #99ccff;
     border: 0;
     -webkit-box-shadow: none;
     box-shadow: none;
 }
 
-/*#container {
-  text-align: center;
-}*/
-
 .btn-view, .btn-create {
-  /*background-color: #D9B08C; darker gold*/
-
   background-color: #FFCB9A;
-  /*background-color: #c7baaf;*/
-  /*border: 4px solid;*/
-  /*border-radius: 15px;*/
-  /*color: #808080;/*
-  /*color: #2C3531;*/
   color: #544436;
 }
 
-#nav-bar-signup, #nav-bar-signin, #nav-bar-signout, #nav-bar-chgpswd {
+#nav-bar-signout, #nav-bar-chgpswd {
   color: #FFCB9A;
+  font-size: 20px;
 }
-/*.navbar-brand, .nav > li > a {
-  padding: 30px 15px;
-}*/
-
-/*.navbar-brand {
-  padding: 40px 20px;
-}*/
-
-/*.btn-view {
-  display: inline-block;
-}
-
-.btn-create {
-  display: inline-block;
-}*/
 
 .headingContainer {
   align-items: center;
   background-color: #FFCB9A;
-  /*background-color: #FDD5AF;*/
   display: flex;
   height: 100px;
 }
@@ -80,26 +50,66 @@
 }
 
 
-#change-password, #sign-out {
+/*#change-password, #sign-out {
+  display: none;
+}*/
+
+#change-password {
   display: none;
 }
 
-.list-group-item-heading {
-  color: #544436;
+/*.viewarea {
+  color: #f0126b;
   font-family:  Georgia, serif;
-  /*font-style: oblique;*/
+  background-color: #FFCB9A;
+}*/
+
+.container-handler {
+  /*color: #f0126b;*/
+  /*font-family:  Georgia, serif;*/
+
+  /*background-color: #d8c3ae;*/
+}
+
+#item {
+  background-color: #FFCB9A;
+    /*background-color: #d8c3ae;*/
+}
+
+/*#25 {
+  background-color: #FFCB9A;
+}*/
+
+/*.list-group-item-heading {
+  font-family:  Georgia, serif;
+  font-size: 30px;
+  font-style: italic;
+  font-weight: bold;
+  text-align: center;
+}*/
+
+#creditor_heading {
+  /*background-color: black;*/
+  /*color: #f0126b;*/
+  color: red;
+  font-family:  Georgia, serif;
   font-size: 30px;
   font-style: italic;
   font-weight: bold;
   text-align: center;
 }
 
+/*h3, .list-group-item-heading {
+  color: #f0126b;
+}*/
+
 .list-group-item-text {
-  /*font-family:  Georgia, serif;*/
   font-family:sans-serif;
   font-size: 25px;
   font-weight: bold;
   text-align: left;
+  /*color: #f0126b;*/
+  color: #606060;
 }
 
 .updateBillModal {
@@ -107,46 +117,30 @@
 }
 
 .modal-title, h5 {
-  /*color: #FFCB9A;*/
   font-size: 25px;
-  /*color: #ab430a;*/
   color: #d66806;
 }
 
-/*#modalForm {
-  color: #105658;
-}*/
-
-/*class="modal-title" id="modalLabel*/
-
 #content {
-  /*background: rgba(255, 255, 255,0.65);*/
-  /*opacity: 0.35;*/
-  /*opacity: 1;*/
+  /*background-color: rgba(255, 255, 255,0.65);*/
+  display: none;
   opacity: .7;
-  /*opacity: .4;*/
-  /*background-color: #105658;*/
-  /*color: inherit;*/
-  /*border: 2px solid;
-  border-radius: 15px;*/
+  background-color: #105658;
   padding-left: 25%;
   padding-right: 25%;
-  display: none;
 }
 
 .authlabel, .createlabel, .updatelabel {
-  /*color: #d6d2b5;*/
   color: #fdd5af;
   font-size: 18px;
 }
 
 #submit-update {
-  /*background-color: #f9c494;*/
   background-color: #dfc5ac;
   color: #896443;
 }
 
-.authClickSignup, .authClickSignin, .authClickPswd, .authClickSignout, .btn-newbill, .paybill, .updatebill {
+.authClickSignup, .authClickSignin, .authClickPswd, .btn-newbill, .paybill, .updatebill {
   background-color: #FFCB9A;
   border: 2px solid;
   border-radius: 15px;
@@ -158,17 +152,18 @@
   background-color: #c7baaf;
 }
 
-/*#creditor, #month, #amount {
-  background-color: #ddd9d5;
-}*/
-
-
 .message {
-  /*color: #fdd5af;*/
-  /*color: #dd920a;*/
-  /*color: #f92702;*/
   color: #e55506;
   font-family: sans-serif;
   font-size: 18px;
   text-align: left;
+}
+
+#billmsg {
+  color: #e55506;
+  font-family: sans-serif;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 40px;
+  text-align: center;
 }

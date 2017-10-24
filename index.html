@@ -19,11 +19,11 @@
            <div class="navbar-header">
              <a class="navbar-brand" href="#"></a>
            </div>
-           <button id="getBillsNav" class="btn btn-view navbar-btn">View Bills</button>
-           <button id="createBillNav" class="btn btn-create navbar-btn">Create Bill</button>
+           <button id="getBillsNav" class="btn btn-view navbar-btn btn-lg">View Bills</button>
+           <button id="createBillNav" class="btn btn-create navbar-btn btn-lg">Create Bill</button>
            <ul class="nav navbar-nav navbar-right">
-             <li><a href="#" id="nav-bar-signup" class="nav-signup">Sign Up</a></li>
-             <li><a href="#" id="nav-bar-signin" class="nav-signin">Sign In</a></li>
+             <!-- <li><a href="#" id="nav-bar-signup" class="nav-signup">Sign Up</a></li>
+             <li><a href="#" id="nav-bar-signin" class="nav-signin">Sign In</a></li> -->
              <li><a href="#" id="nav-bar-signout" class="nav-signout">Sign Out</a></li>
              <li><a href="#" id="nav-bar-chgpswd" class="nav-chgpswd">Change Password</a></li>
            </ul>
@@ -47,7 +47,7 @@
         <fieldset>
           <legend class="authlabel">Sign in!</legend>
           <input type="text" id="emailSignin" class="signin" name="credentials[email]" placeholder="Enter Email">
-          <input type="text" id="passwordSignin" class="signin" name="credentials[password]" placeholder="Enter Password">
+          <input type="password" id="passwordSignin" class="signin" name="credentials[password]" placeholder="Enter Password">
           <input type="submit" class="authClickSignin" name="submit" value="Sign in!">
           <input type="reset" class="authClickSignin" value="Reset" />
         </fieldset>
@@ -62,18 +62,12 @@
         </fieldset>
       </form>
       <br>
-      <form id="sign-out">
+      <!-- <form id="sign-out">
         <fieldset>
           <legend class="authlabel">Sign out!</legend>
           <input type="submit" class="authClickSignout" name="submit" value="Sign out!">
         </fieldset>
-      </form>
-      <!-- <div id='billtracker_message' class='billtracker_message'></div> -->
-      <!-- <div id="container" class="buttons">
-          <button type="button" id="getBillsButton" class="btn-view-create">View Bills</button>
-          <button type="button" id="createBillButton" class="btn-view-create">Create A Bill</button>
-          <div id="content" class="content"></div>
-      </div> -->
+      </form> -->
       <div id="content" class="content"></div>
       <!-- Modal for Bill Update -->
       <div class="modal fade" id="updateBillModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

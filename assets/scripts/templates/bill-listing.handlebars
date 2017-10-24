@@ -1,11 +1,11 @@
 <!-- Below is one block of HTML for each record in an array -->
 <!-- In api.js, the get request is url: app.host + '/bills' which returns an array of bills -->
 <!-- This code iterates through all rows in the array of bills  -->
-
-{{#each bills as |bill|}}
-  {{#if bill}}
-      <a data-id="{{bill.id}}" class="list-group-item">
-      <h3 data-id="{{bill.id}}" class="list-group-item-heading"> {{bill.creditor}}</h3>
+<div class="container-handler">
+{{#if bills}}
+  {{#each bills as |bill|}}
+      <a data-id="{{bill.id}}" class="list-group-item" id="item">
+      <h3 data-id="{{bill.id}}" class="list-group-item-heading"id="creditor_heading" > {{bill.creditor}}</h3>
       <br>
       <p data-id="{{bill.id}}" class="list-group-item-text"> Billing Month: {{bill.billing_month}}
       <br>
@@ -16,7 +16,8 @@
         <button data-id="{{bill.id}}" class='paybill' name='pay'>Pay Bill</button>
         <button data-id="{{bill.id}}" data-billcreditor="{{bill.creditor}}" data-billmonth="{{bill.billing_month}}" data-amountdue="{{bill.amount_due}}" class='updatebill' name='update'>Edit Bill</button>
       </div>
+   {{/each}}
   {{else}}
-    Your list is empty!
+    <p id="billmsg">Your list is empty!</p>
   {{/if}}
-{{/each}}
+</div>

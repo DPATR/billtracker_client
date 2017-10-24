@@ -1,61 +1,62 @@
-[![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly/education/web-development-immersive)
+  # DESCRIPTION
 
-# browser-template
+  This is an application designed to keep track of bills that are due for payment each month.
 
-A template for starting front-end projects. Webpack for `require` system, build
-pipeline, and development server. Boostrap and Handlebars.js included. No
-front-end frameworks included.
+  Each user will have their own collection of bills that cannot be viewed by other system users.
 
-## Installation
+  Authorization:
 
-1.  [Download](../../archive/master.zip) this template.
-1.  Unzip and rename the template directory.
-1.  Empty [`README.md`](README.md) and fill with your own content.
-1.  Replace all instances of `denise-project2-billtracker-client` with the name of your project.
-1.  Move into the new project and `git init`
-1.  Add all of the files in your project with the command `git add -A`
-  -   *Note:* THIS IS THE ONLY TIME YOU SHOULD RUN THIS COMMAND
-1.  Commit all of your files with the command `git commit`
-  -   Your commit title should read `Initial commit`
-1.  Install dependencies with `npm install`.
+  1. When accessing the application for the first time, the person must Sign Up with an email address and password and then Sign In.
+  2. An option to Change Password will be available once you are signed in.
+  3. You should Sign Out before exiting the game.
 
-## Structure
+  View Bills:
 
-Developers should store JavaScript files in [`assets/scripts`](assets/scripts).
-The "manifest" or entry-point is
-[`assets/scripts/index.js`](assets/scripts/index.js). In general, only
-application initialization goes in this file. It's normal for developers to
-start putting all code in this file, but encourage them to break out different
-responsibilities and use the `require` syntax put references where they're
-needed.
+  1. Generates a list of bills that are due for payment in any given month.
+  2. Options exist to edit existing bills and pay existing bills.
+  3. After editing or paying a bill, the list of bills will refresh for viewing.
+  4. After paying a bill, it will be removed from the list of bills and the database.
 
-Developers should set `config.apiOrigins.production` (and
-`config.apiOrigins.development` if it differs from the default).  With
-`apiOrigins` set, developers may rely on `config.apiOrigin` as the base for API
-URLs.
+  Create Bill:
 
-Developers should store styles in [`assets/styles`](assets/styles) and load them
-from [`assets/styles/index.scss`](assets/styles/index.scss).
+  1. Generates a new bill that is due for payment in any given month.
+  2. After crediting a bill, the list of bills will refresh for viewing.
 
-Developers should use [getFormFields](forms.md) to retrieve form data to send to
-an API.
+  Author: Denise Patriquin Date: 10/24/2017
 
-To deploy a browser-template based SPA, run `grunt deploy`.
+## VIEW ONLINE
 
-## Tasks
+Client Bill Tracker Application:  https://dpatr.github.io/billtracker_client/
 
-Developers should run these often!
+API Bill Tracker Application:  https://cryptic-headland-52960.herokuapp.icom
 
--   `grunt nag` or just `grunt`: runs code quality analysis tools on your code
-    and complains
--   `grunt make-standard`: reformats all your code in the JavaScript Standard Style
--   `grunt <server|serve|s>`: generates bundles, watches, and livereloads
--   `grunt test`: runs any automated tests, depends on `grunt build`
--   `grunt build`: place bundled styles and scripts where `index.html` can find
-    them
+API GitHub Repository:  https://github.com/DPATR/billtracker_api
 
-## [License](LICENSE)
+## TECHNOLOGIES
 
-1.  All content is licensed under a CC­BY­NC­SA 4.0 license.
-1.  All software code is licensed under GNU GPLv3. For commercial use or
-    alternative licensing, please contact legal@ga.co.
+1. JavaScript
+2. jQuery for DOM manipulation and event handling
+3. AJAX for interacting with an API
+4. CSS for styles
+5. Bootstrap
+6. Handlebars for templating
+7. Modal dialog box
+
+## PLANNING AND APPROACH
+
+Wireframe: https://imgur.com/A16uUpk
+
+User Stories: https://imgur.com/jzAzqdI
+
+Approach:
+
+I used a top-down analysis for this project.  The API was designed and tested first.  The Client was designed and tested using the API structure and data.
+
+For the Client, I began by writing pseudo-code and then built code modules.
+
+I used test scenarios and each module was unit tested.  I followed with integration and end-to-end testing for the application as a whole.
+
+## FUTURE ENHANCEMENTS
+
+1. Code refactoring to include breaking out the Authentication events and the Billing Resource events.
+2. Create a table to load results from Handlebars templating to enable better styling options.

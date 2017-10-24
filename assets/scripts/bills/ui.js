@@ -23,9 +23,12 @@ const signInSuccess = function (data) {
   // console.log('data.user.email = ' + data.user.id)
   store.user = data.user
   store.signedIn = true
-  $('.buttons').show()
-  $('#change-password').show()
-  $('#sign-out').show()
+
+  // $('.buttons').show()
+  // $('#change-password').show()
+
+  // $('#sign-out').show()
+
   $('#sign-in').hide()
   $('#sign-up').hide()
 }
@@ -37,6 +40,7 @@ const signInFailure = function (error) {
 
 const changePasswordSuccess = function (data) {
   $('#message').text('Changed password successfully')
+  $('#change-password').hide()
 }
 
 const changePasswordFailure = function (error) {
@@ -47,11 +51,14 @@ const changePasswordFailure = function (error) {
 const signOutSuccess = function (data) {
   $('#message').text('Signed out successfully')
   store.user = null
+  store.signedIn = false
   $('.buttons').hide()
   $('#sign-in').show()
   $('#sign-up').show()
   $('#change-password').hide()
-  $('#sign-out').hide()
+
+  // $('#sign-out').hide()
+
   $('#create-bill').hide()
   $('#updateBillModal').modal('hide')
   clearBills()
