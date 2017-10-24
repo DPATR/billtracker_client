@@ -92,6 +92,7 @@ const clearBills = () => {
 
 // const setCreateForm = function () {
 const setCreateForm = () => {
+  console.log('In setCreateForm')
   signedIn = store.signedIn
   if (!signedIn) {
     $('#message').text('You need to be signed in to create a new bill')
@@ -108,7 +109,7 @@ const setCreateForm = () => {
 const onCreateBill = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
-  // console.log('in events.js')
+  console.log('in events.js')
   const newBillData = {
     'bill': {
       'creditor': data.c_creditorName,
@@ -116,7 +117,7 @@ const onCreateBill = function (event) {
       'amount_due': data.c_dueAmount
     }
   }
-  // console.log(newBillData)
+  console.log(newBillData)
   api.createBill(newBillData)
     .then(ui.createBillSuccess)
     .catch(ui.createBillFailure)
@@ -147,9 +148,12 @@ const addHandlers = function () {
   $('#change-password').on('submit', onChangePassword)
   $('#sign-out').on('submit', onSignOut)
   $('#createBillButton').on('click', setCreateForm) // initialize an show form
+  // Try these 2 buttons
   $('#getBillsButton').on('click', onGetBills)
   $('#create-bill').on('submit', onCreateBill) // do the actual creation of the bill
   // $('#nav-bar-signin').on('click', onNavSign)
+  $('#getBillsNav').on('click', onGetBills)
+  $('#createBillNav').on('click', setCreateForm) // initialize an show form
 }
 
 module.exports = {
