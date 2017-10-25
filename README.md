@@ -59,4 +59,3 @@ I used test scenarios and each module was unit tested.  I followed with integrat
 ## FUTURE ENHANCEMENTS
 
 1. Code refactoring to include breaking out the Authentication events and the Billing Resource events.
-2. Create a table to load results from Handlebars templating to enable better styling options.

@@ -1,13 +1,11 @@
 'use strict'
 
-// const getFormFields = require(`../../../lib/get-form-fields`)
-
 const store = require('../store')
 const api = require('./api.js')
 const showBillsTemplate = require('../templates/bill-listing.handlebars') // When you set a variable to a require that instantiates handlebars, the variable becomes a function.
 
 const signUpSuccess = function (data) {
-  $('#message').text('Signed up successfully')
+  $('#message').text('Sign up was successful')
 }
 
 const signUpFailure = function (error) {
@@ -16,10 +14,13 @@ const signUpFailure = function (error) {
 }
 
 const signInSuccess = function (data) {
-  $('#message').text('Signed in successfully')
   store.signedInID = data.user.id
   store.user = data.user
   store.signedIn = true
+  api.getBills()
+    .then(getBillsSuccess)
+    .catch(getBillsFailure)
+  $('#message').text('Sign in was successful')
   $('#sign-in').hide()
   $('#sign-up').hide()
 }
@@ -30,7 +31,10 @@ const signInFailure = function (error) {
 }
 
 const changePasswordSuccess = function (data) {
-  $('#message').text('Changed password successfully')
+  api.getBills()
+    .then(getBillsSuccess)
+    .catch(getBillsFailure)
+  $('#message').text('Change password was successful')
   $('#change-password').hide()
 }
 
@@ -40,7 +44,7 @@ const changePasswordFailure = function (error) {
 }
 
 const signOutSuccess = function (data) {
-  $('#message').text('Signed out successfully')
+  $('#message').text('Sign out was successful')
   store.user = null
   store.signedIn = false
   $('.buttons').hide()
@@ -61,7 +65,7 @@ const createBillSuccess = function (data) {
   api.getBills()
     .then(getBillsSuccess)
     .catch(getBillsFailure)
-  $('#message').text('Create bill and refresh list successful')
+  $('#message').text('Create bill was successful')
   $('#create-bill').hide()
 }
 
@@ -74,7 +78,7 @@ const updateBillSuccess = function (data) {
   api.getBills()
     .then(getBillsSuccess)
     .catch(getBillsFailure)
-  $('#message').text('Update bill and refresh list successful')
+  $('#message').text('Update bill was successful')
   $('#updateBillModal').modal('hide')
   $('#modalForm').find('input[name="creditor"]').val('')
   $('#modalForm').find('input[name="billing_month"]').val('')
@@ -90,7 +94,7 @@ const deleteBillSuccess = function (data) {
   api.getBills()
     .then(getBillsSuccess)
     .catch(getBillsFailure)
-  $('#message').text('Delete bill and refresh list successful')
+  $('#message').text('Pay Bill was successful')
 }
 
 const deleteBillFailure = function (error) {
@@ -99,18 +103,11 @@ const deleteBillFailure = function (error) {
 }
 
 const onUpdateSave = function () { // When signed in user enters data in the modal for edit/update bill and clicks on Save Changes button
-  console.log('In onUpdateSave!')
   event.preventDefault()
-  console.log('store.currentBillID = ' + store.currentBillID)
   const currentBillID = store.currentBillID
   const creditor = $('#modalForm').find('input[name="creditor"]').val()
   const billingMonth = $('#modalForm').find('input[name="billing_month"]').val()
   const amountDue = $('#modalForm').find('input[name="amount_due"]').val()
-
-  console.log('value of creditor = ' + creditor)
-  console.log('value of billingMonth = ' + billingMonth)
-  console.log('value of amountDue = ' + amountDue)
-
   const updBillData = {
     'bill': {
       'creditor': creditor,
@@ -118,7 +115,6 @@ const onUpdateSave = function () { // When signed in user enters data in the mod
       'amount_due': amountDue
     }
   }
-  console.log(updBillData, currentBillID)
   api.updateBill(updBillData, currentBillID)
     .then(updateBillSuccess)
     .catch(updateBillFailure)
@@ -133,7 +129,6 @@ const getBillsSuccess = (data) => { // This function will use handlebars to disp
     event.preventDefault()
     $(this).parent().parent().hide()
     const currentBillID = $(this).data('id')
-    console.log('this is the bill that I want to delete ', currentBillID)
     api.deleteBill(currentBillID)
       .then(deleteBillSuccess)
       .catch(deleteBillFailure)
@@ -143,16 +138,12 @@ const getBillsSuccess = (data) => { // This function will use handlebars to disp
     $('#updateBillModal').modal('show')
     const currentBillID = $(this).data('id') // changed after handlebars change on button:  data-id="{{bill.id}}"
     store.currentBillID = currentBillID
-    console.log('currentBillID = ' + currentBillID)
     const currentCreditor = $(this).data('billcreditor')
     const currentBillMonth = $(this).data('billmonth')
     const currentAmountDue = $(this).data('amountdue')
-    const creditorName = $('#modalForm').find('input[name="creditor"]').val(currentCreditor)
-    const billingMonth = $('#modalForm').find('input[name="billing_month"]').val(currentBillMonth)
-    const amountDue = $('#modalForm').find('input[name="amount_due"]').val(currentAmountDue)
-    console.log('this is the creditor that I want to update ', creditorName)
-    console.log('this is the billing month that I want to update ', billingMonth)
-    console.log('this is the amount that I want to update ', amountDue)
+    $('#modalForm').find('input[name="creditor"]').val(currentCreditor)
+    $('#modalForm').find('input[name="billing_month"]').val(currentBillMonth)
+    $('#modalForm').find('input[name="amount_due"]').val(currentAmountDue)
     $('#submit-update').on('click', onUpdateSave)
   })
 }

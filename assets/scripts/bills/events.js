@@ -45,7 +45,6 @@ let signedIn = false
 
 const onSignIn = function (event) {
   const data = getFormFields(this)
-  console.log('in events.js')
   event.preventDefault()
   $('#message').text('')
   api.signIn(data)
@@ -68,7 +67,6 @@ const onChangePassword = function (event) {
 }
 
 const onSignOut = function (event) {
-  console.log('In onSignOut')
   const data = store.user.id // new with navbutton
   $('#message').text('')
   api.signOut(data)
@@ -85,13 +83,11 @@ const onNavSignOut = function (event) {
   if (!signedIn) {
     $('#message').text('You are not signed in')
   } else {
-    console.log('Value of signedIn = ' + signedIn)
     onSignOut()
   }
 }
 
 const onNavChangePassword = function (event) {
-  console.log('Value of signedIn = ' + store.signedIn)
   signedIn = store.signedIn
   if (!signedIn) {
     $('#message').text('You need to be signed in to change password')
@@ -110,7 +106,6 @@ const clearBills = () => {
 
 // const setCreateForm = function () {
 const setCreateForm = () => {
-  console.log('In setCreateForm')
   signedIn = store.signedIn
   if (!signedIn) {
     $('#message').text('You need to be signed in to create a new bill')
@@ -128,7 +123,6 @@ const setCreateForm = () => {
 const onCreateBill = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
-  console.log('in events.js')
   const newBillData = {
     'bill': {
       'creditor': data.c_creditorName,
@@ -136,7 +130,6 @@ const onCreateBill = function (event) {
       'amount_due': data.c_dueAmount
     }
   }
-  console.log(newBillData)
   api.createBill(newBillData)
     .then(ui.createBillSuccess)
     .catch(ui.createBillFailure)

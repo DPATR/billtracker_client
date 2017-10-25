@@ -12,8 +12,6 @@ const signUp = function (data) {
 }
 
 const signIn = function (data) {
-  console.log('In api.js')
-  console.log(data)
   return $.ajax({ // make a request of the API
     url: config.apiOrigin + '/sign-in',
     method: 'POST',
@@ -54,8 +52,6 @@ const getBills = function () {
 }
 
 const createBill = function (data) {
-  console.log('In api.js')
-  console.log(data)
   return $.ajax({ // make a request of the API
     url: config.apiOrigin + '/bills',
     method: 'POST',
@@ -67,10 +63,6 @@ const createBill = function (data) {
 }
 
 const updateBill = function (data, currentBillID) {
-  console.log('In api.js')
-  console.log('currentBillID = ' + currentBillID)
-  console.log('data = ' + data)
-  console.log(data)
   return $.ajax({ // make a request of the API
     url: config.apiOrigin + '/bills/' + currentBillID,
     method: 'PATCH',

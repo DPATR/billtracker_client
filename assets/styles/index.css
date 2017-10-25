@@ -1,5 +1,5 @@
 .container-fluid {
-  background-color: #105658;
+  background-color: #183249;
 }
 
 #create-bill{
@@ -17,18 +17,18 @@
 }
 
 .btn-view, .btn-create {
-  background-color: #FFCB9A;
-  color: #544436;
+  background-color: #cec491;
+  color: #800000;
 }
 
 #nav-bar-signout, #nav-bar-chgpswd {
-  color: #FFCB9A;
+  color: #cec491;
   font-size: 20px;
 }
 
 .headingContainer {
   align-items: center;
-  background-color: #FFCB9A;
+  background-color: #dbd095;
   display: flex;
   height: 100px;
 }
@@ -39,9 +39,9 @@
 }
 
 .topHeading {
-  color: #544436;
+  color: #800000;
   font-family: Georgia, serif;
-  font-size: 60px;
+  font-size: 50px;
   font-style: italic;
   font-weight: bold;
   padding-bottom: 22px;
@@ -49,67 +49,29 @@
   vertical-align:middle;
 }
 
-
-/*#change-password, #sign-out {
-  display: none;
-}*/
-
 #change-password {
   display: none;
 }
 
-/*.viewarea {
-  color: #f0126b;
-  font-family:  Georgia, serif;
-  background-color: #FFCB9A;
-}*/
-
-.container-handler {
-  /*color: #f0126b;*/
-  /*font-family:  Georgia, serif;*/
-
-  /*background-color: #d8c3ae;*/
-}
-
 #item {
-  background-color: #FFCB9A;
-    /*background-color: #d8c3ae;*/
+  background-color: #cec491;
 }
-
-/*#25 {
-  background-color: #FFCB9A;
-}*/
-
-/*.list-group-item-heading {
-  font-family:  Georgia, serif;
-  font-size: 30px;
-  font-style: italic;
-  font-weight: bold;
-  text-align: center;
-}*/
 
 #creditor_heading {
-  /*background-color: black;*/
-  /*color: #f0126b;*/
-  color: red;
-  font-family:  Georgia, serif;
-  font-size: 30px;
+  color: #183249;
+  font-family: sans-serif;
+  font-size: 28px;
   font-style: italic;
   font-weight: bold;
   text-align: center;
 }
 
-/*h3, .list-group-item-heading {
-  color: #f0126b;
-}*/
-
 .list-group-item-text {
-  font-family:sans-serif;
-  font-size: 25px;
+  font-family: sans-serif;
+  font-size: 22px;
   font-weight: bold;
   text-align: left;
-  /*color: #f0126b;*/
-  color: #606060;
+  color: #183249;
 }
 
 .updateBillModal {
@@ -117,22 +79,21 @@
 }
 
 .modal-title, h5 {
-  font-size: 25px;
-  color: #d66806;
+  font-size: 30px;
+  color: #800000;
 }
 
 #content {
-  /*background-color: rgba(255, 255, 255,0.65);*/
   display: none;
-  opacity: .7;
-  background-color: #105658;
+  opacity: .9;
+  background-color: #183249;
   padding-left: 25%;
   padding-right: 25%;
 }
 
-.authlabel, .createlabel, .updatelabel {
-  color: #fdd5af;
-  font-size: 18px;
+.authlabel, .createlabel {
+  color: #cec491;
+  font-size: 20px;
 }
 
 #submit-update {
@@ -140,11 +101,19 @@
   color: #896443;
 }
 
-.authClickSignup, .authClickSignin, .authClickPswd, .btn-newbill, .paybill, .updatebill {
-  background-color: #FFCB9A;
+.authClickSignup, .authClickSignin, .authClickPswd, .btn-newbill {
+  background-color: #cec491;
+  border: 1px solid;
+  border-radius: 8px;
+  color: #800000;
+  font-size: 17px;
+}
+
+.paybill, .updatebill {
+  background-color: #183249;
   border: 2px solid;
-  border-radius: 15px;
-  color: #544436;
+  border-radius: 8px;
+  color: #dbd095;
   font-size: 15px;
 }
 
@@ -152,18 +121,26 @@
   background-color: #c7baaf;
 }
 
+.createBill, .pswdchange, .signup, .signin {
+  border: 1px solid #999999;
+  font-size: 15px;
+  height: 31px;
+  padding: 5px;
+  width: 152px;
+}
+
 .message {
-  color: #e55506;
+  color: #dd920a;
   font-family: sans-serif;
   font-size: 18px;
+  padding-left: 2%;
   text-align: left;
 }
 
 #billmsg {
-  color: #e55506;
+  color: #e39811;
   font-family: sans-serif;
   font-style: italic;
-  font-weight: bold;
-  font-size: 40px;
+  font-size: 30px;
   text-align: center;
 }
