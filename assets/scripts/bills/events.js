@@ -92,6 +92,7 @@ const onNavChangePassword = function (event) {
   if (!signedIn) {
     $('#message').text('You need to be signed in to change password')
   } else {
+    initAuthElements()
     $('#change-password').show()
     $('#create-bill').hide()
     clearBills()
