@@ -105,6 +105,18 @@ const clearBills = () => {
   ui.clearBills()
 }
 
+const validateCreateForm = function (createCreditor, createMonth, createAmount) { // validate all data entered in the create-bill form
+  if ((createCreditor === '') || (createMonth === '') || (createAmount === '')) { // return false if all 3 data elements are not entered on screen
+    return false
+  } else {
+    if ($.isNumeric(createAmount)) { // return 'Not Numeric' if text or invalid characters are entered in the Amount Due field
+      return true
+    } else {
+      return 'Not Numeric'
+    }
+  }
+}
+
 // const setCreateForm = function () {
 const setCreateForm = () => {
   signedIn = store.signedIn
@@ -122,18 +134,28 @@ const setCreateForm = () => {
 
 // Create a new bill that is owned by the current user who is signed in
 const onCreateBill = function (event) {
-  const data = getFormFields(this)
-  event.preventDefault()
-  const newBillData = {
-    'bill': {
-      'creditor': data.c_creditorName,
-      'billing_month': data.c_dueMonth,
-      'amount_due': data.c_dueAmount
+  // const data = getFormFields(this)
+  const createCreditor = $('#create-bill').find('input[name="c_creditorName"]').val()
+  const createMonth = $('#create-bill').find('input[name="c_dueMonth"]').val()
+  const createAmount = $('#create-bill').find('input[name="c_dueAmount"]').val()
+  const validData = validateCreateForm(createCreditor, createMonth, createAmount)
+  if (validData === false) {
+    $('#message').text('Creditor Name, Month Due and Bill Amount are all required')
+  } else if (validData === 'Not Numeric') {
+    $('#message').text('Amount Due is not numeric')
+  } else {
+    event.preventDefault()
+    const newBillData = {
+      'bill': {
+        'creditor': createCreditor,
+        'billing_month': createMonth,
+        'amount_due': createAmount
+      }
     }
+    api.createBill(newBillData)
+      .then(ui.createBillSuccess)
+      .catch(ui.createBillFailure)
   }
-  api.createBill(newBillData)
-    .then(ui.createBillSuccess)
-    .catch(ui.createBillFailure)
 }
 
 const onGetBills = (event) => {
@@ -157,7 +179,7 @@ const addHandlers = function () {
   $('#sign-in').on('submit', onSignIn)
   $('#change-password').on('submit', onChangePassword)
   $('#createBillButton').on('click', setCreateForm) // initialize an show form
-  $('#create-bill').on('submit', onCreateBill) // do the actual creation of the bill
+  $('#create-submit').on('click', onCreateBill) // do the actual creation of the bill
   $('#getBillsNav').on('click', onGetBills)
   $('#createBillNav').on('click', setCreateForm) // initialize an show form
   $('#nav-bar-signout').on('click', onNavSignOut)
