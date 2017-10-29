@@ -108,16 +108,33 @@ const onUpdateSave = function () { // When signed in user enters data in the mod
   const creditor = $('#modalForm').find('input[name="creditor"]').val()
   const billingMonth = $('#modalForm').find('input[name="billing_month"]').val()
   const amountDue = $('#modalForm').find('input[name="amount_due"]').val()
-  const updBillData = {
-    'bill': {
-      'creditor': creditor,
-      'billing_month': billingMonth,
-      'amount_due': amountDue
-    }
+  let modalEdit = true
+  if ((creditor === '') || (creditor === 'REQUIRED FIELD')) {
+    $('#modalForm').find('input[name="creditor"]').val('REQUIRED FIELD')
+    modalEdit = false
   }
-  api.updateBill(updBillData, currentBillID)
-    .then(updateBillSuccess)
-    .catch(updateBillFailure)
+  if ((billingMonth === '') || (billingMonth === 'REQUIRED FIELD')) {
+    $('#modalForm').find('input[name="billing_month"]').val('REQUIRED FIELD')
+    modalEdit = false
+  }
+  if ((amountDue === '') || (!$.isNumeric(amountDue)) || (amountDue === 'NUMERIC REQUIRED')) {
+    $('#modalForm').find('input[name="amount_due"]').val('NUMERIC REQUIRED')
+    modalEdit = false
+  }
+  if (!modalEdit) {
+    $('#message').text('Errors on update bill data entry')
+  } else {
+    const updBillData = {
+      'bill': {
+        'creditor': creditor,
+        'billing_month': billingMonth,
+        'amount_due': amountDue
+      }
+    }
+    api.updateBill(updBillData, currentBillID)
+      .then(updateBillSuccess)
+      .catch(updateBillFailure)
+  }
 }
 
 const getBillsSuccess = (data) => { // This function will use handlebars to display a list of Bills for signed in user, Delete the bill when use clicks Pay Bill button and Update the bill when user clicks Update Bill button
